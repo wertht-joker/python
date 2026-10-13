@@ -1,0 +1,15 @@
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: resume-neo4j
+    ports:
+      - "7474:7474"   # HTTP（Neo4j Browser 可视化）
+      - "7687:7687"   # Bolt（应用连接）
+    environment:
+      - NEO4J_AUTH=none          # 演示免密，方便本地跑
+      - NEO4J_server_memory_heap_max__size=1G
+    volumes:
+      - neo4j_data:/data
+
+volumes:
+  neo4j_data:
